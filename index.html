@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎯 YouTube Tag Genius PRO | AI-Powered Tag Generator</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Generate high-performing YouTube tags with our AI-powered tool. Extract tags from any video or get custom AI-generated tags to boost your views.">
+    <meta name="keywords" content="YouTube tags, tag generator, video SEO, YouTube SEO, tag extractor, AI tags, YouTube growth">
+    <meta name="author" content="YouTube Tag Genius">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tag-genius.netlify.app/">
+    <meta property="og:title" content="YouTube Tag Genius PRO | AI-Powered Tag Generator">
+    <meta property="og:description" content="Generate high-performing YouTube tags with our AI-powered tool. Extract tags from any video or get custom AI-generated tags to boost your views.">
+    <meta property="og:image" content="https://tag-genius.netlify.app/logo.png">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://tag-genius.netlify.app/">
+    <meta name="twitter:title" content="YouTube Tag Genius PRO | AI-Powered Tag Generator">
+    <meta name="twitter:description" content="Generate high-performing YouTube tags with our AI-powered tool. Extract tags from any video or get custom AI-generated tags to boost your views.">
+    <meta name="twitter:image" content="https://tag-genius.netlify.app/logo.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,14 +43,9 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: #f8fafc;
+            color: #1e293b;
             transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-        }
-        
-        body.dark {
-            background-color: #0f172a;
-            color: #e2e8f0;
         }
         
         .glass {
@@ -35,11 +54,6 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.18);
             transition: all 0.3s ease;
-        }
-        
-        .dark .glass {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .gradient-bg {
@@ -70,10 +84,6 @@
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             background-color: rgba(255, 255, 255, 0.4);
-        }
-        
-        .dark .card-hover:hover {
-            background-color: rgba(15, 23, 42, 0.8);
         }
         
         .btn-hover {
@@ -159,8 +169,14 @@
         
         /* Custom logo size */
         .logo {
-            height: 140px;
+            height: 80px;
             width: auto;
+        }
+        
+        @media (min-width: 768px) {
+            .logo {
+                height: 140px;
+            }
         }
         
         /* Header alignment */
@@ -168,7 +184,108 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem 2rem;
+            padding: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .header-container {
+                padding: 1rem 2rem;
+            }
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 2rem;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+            display: block;
+        }
+        
+        .mobile-menu .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .mobile-menu nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .mobile-menu .nav-link {
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        /* Burger menu button */
+        .burger-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        
+        .burger-btn span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .burger-btn.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .burger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .burger-btn.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
         }
         
         /* Enhanced button hover effects */
@@ -219,59 +336,129 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        
+        /* Mobile adjustments */
+        @media (max-width: 767px) {
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons button {
+                width: 100%;
+            }
+            
+            .input-section {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .input-section button {
+                width: 100%;
+            }
+            
+            .video-info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .tag-options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-buttons button {
+                width: 100%;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
     </style>
 </head>
-<body class="dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <!-- Dark Mode Toggle -->
-    <button id="themeToggle" class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full glass flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300">
-        <i class="fas fa-moon text-xl dark:hidden text-indigo-600"></i>
-        <i class="fas fa-sun text-xl hidden dark:block text-amber-400"></i>
-    </button>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div id="menuOverlay" class="menu-overlay"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <button id="closeMenuBtn" class="close-btn text-gray-800">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav>
+            <a href="#" class="nav-link hover:text-indigo-600 transition flex items-center gap-2">
+                <i class="fas fa-home mr-2"></i> Home
+            </a>
+            <a href="#" class="nav-link hover:text-indigo-600 transition flex items-center gap-2">
+                <i class="fas fa-book mr-2"></i> Resources
+            </a>
+            <a href="#" class="nav-link hover:text-indigo-600 transition flex items-center gap-2">
+                <i class="fas fa-envelope mr-2"></i> Contact
+            </a>
+        </nav>
+    </div>
 
     <!-- Main Container -->
     <div class="min-h-screen flex flex-col">
         <!-- Animated Header -->
         <header class="gradient-bg text-white shadow-2xl">
-            <div class="container mx-auto px-4 py-2">
+            <div class="container mx-auto px-4">
                 <div class="header-container">
                     <div class="flex items-center gap-4">
                         <!-- Replace logo.svg with your actual logo file -->
                         <img src="logo.png" alt="YouTube Tag Genius Logo" class="logo">
-                        <div>
+                        <div class="hidden md:block">
                             <h1 class="text-2xl font-bold tracking-tight">YouTube Tag Genius <span class="text-xs bg-white text-indigo-600 px-2 py-1 rounded-full ml-2">PRO</span></h1>
                             <p class="text-indigo-100 opacity-90 mt-1">AI-Powered Tag Extraction & Generation</p>
                         </div>
                     </div>
-                    <nav class="flex gap-6 items-center">
-                        <a href="#" class="nav-link hover:text-white transition flex items-center gap-2">
-                            <span>Home</span>
-                        </a>
-                        <a href="#" class="nav-link hover:text-white transition flex items-center gap-2">
-                            <span>Resources</span>
-                        </a>
-                        <a href="#" class="nav-link hover:text-white transition flex items-center gap-2">
-                            <span>Contact</span>
-                        </a>
-                    </nav>
+                    <div class="flex items-center gap-4">
+                        <nav class="hidden md:flex gap-6">
+                            <a href="#" class="nav-link hover:text-white transition flex items-center gap-2">
+                                <span>Home</span>
+                            </a>
+                            <a href="#" class="nav-link hover:text-white transition flex items-center gap-2">
+                                <span>Resources</span>
+                            </a>
+                            <a href="#" class="nav-link hover:text-white transition flex items-center gap-2">
+                                <span>Contact</span>
+                            </a>
+                        </nav>
+                        <button id="burgerBtn" class="burger-btn md:hidden">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </header>
 
         <!-- Hero Section -->
-        <section class="py-12 slide-up">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 max-w-3xl mx-auto">
+        <section class="py-12 px-4 slide-up">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6 max-w-3xl mx-auto">
                     <span class="bg-clip-text text-transparent gradient-bg">Extract & Generate</span> 
                     <br>High-Performing YouTube Tags
                 </h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
                     Unlock your video's potential with our AI-powered tag analysis and generation tool
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <button class="btn-primary px-8 py-4 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all try-it-btn">
+                <div class="flex flex-col sm:flex-row justify-center gap-4 hero-buttons">
+                    <button class="btn-primary px-6 py-3 md:px-8 md:py-4 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all try-it-btn">
                         <i class="fas fa-bolt mr-2"></i> Try It Now
                     </button>
-                    <button class="btn-secondary px-8 py-4 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all watch-demo-btn">
+                    <button class="btn-secondary px-6 py-3 md:px-8 md:py-4 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all watch-demo-btn">
                         <i class="fas fa-play-circle mr-2"></i> Watch Demo
                     </button>
                 </div>
@@ -279,20 +466,20 @@
         </section>
 
         <!-- Main Tool Section -->
-        <main class="flex-1 pb-16">
-            <div class="container mx-auto px-4">
+        <main class="flex-1 pb-16 px-4">
+            <div class="container mx-auto">
                 <div class="max-w-6xl mx-auto glass rounded-3xl overflow-hidden shadow-2xl">
                     <!-- Input Section -->
-                    <div class="p-8 bg-white/80 dark:bg-gray-800/70">
-                        <div class="flex flex-col md:flex-row gap-6 items-end">
-                            <div class="flex-1">
-                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">YouTube Video URL</label>
+                    <div class="p-6 md:p-8 bg-white/80">
+                        <div class="flex flex-col md:flex-row gap-4 md:gap-6 items-end input-section">
+                            <div class="flex-1 w-full">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">YouTube Video URL</label>
                                 <div class="relative">
                                     <input 
                                         type="text" 
                                         id="videoUrl" 
                                         placeholder="https://www.youtube.com/watch?v=..." 
-                                        class="w-full px-5 py-4 border-0 bg-gray-100 dark:bg-gray-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
+                                        class="w-full px-4 py-3 md:px-5 md:py-4 border-0 bg-gray-100 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
                                     >
                                     <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
                                         <i class="fas fa-link text-gray-400"></i>
@@ -301,16 +488,16 @@
                             </div>
                             <button 
                                 id="extractBtn" 
-                                class="btn-primary px-8 py-4 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center analyze-btn"
+                                class="btn-primary w-full md:w-auto px-6 py-3 md:px-8 md:py-4 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all flex items-center justify-center analyze-btn"
                             >
                                 <i class="fas fa-magic mr-2"></i> Analyze Video
                             </button>
                         </div>
                         
                         <div id="errorContainer" class="mt-4 hidden">
-                            <div class="bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 text-red-700 dark:text-red-300 p-4 rounded-lg">
+                            <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg">
                                 <div class="flex items-start">
-                                    <i class="fas fa-exclamation-circle text-red-500 dark:text-red-400 mt-1 mr-3"></i>
+                                    <i class="fas fa-exclamation-circle text-red-500 mt-1 mr-3"></i>
                                     <div>
                                         <p id="errorMessage" class="font-medium"></p>
                                     </div>
@@ -320,84 +507,84 @@
                     </div>
 
                     <!-- Results Section -->
-                    <div class="p-8 bg-gray-50/80 dark:bg-gray-900/70 border-t border-gray-200 dark:border-gray-700">
+                    <div class="p-6 md:p-8 bg-gray-50/80 border-t border-gray-200">
                         <div id="loadingSpinner" class="text-center py-12 hidden">
                             <div class="inline-flex flex-col items-center">
                                 <div class="loader mb-4"></div>
-                                <p class="text-gray-600 dark:text-gray-400 font-medium">Analyzing video content...</p>
-                                <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">This usually takes 3-5 seconds</p>
+                                <p class="text-gray-600 font-medium">Analyzing video content...</p>
+                                <p class="text-sm text-gray-500 mt-2">This usually takes 3-5 seconds</p>
                             </div>
                         </div>
 
                         <div id="resultsContainer" class="hidden">
                             <!-- Video Info -->
-                            <div class="glass card-hover rounded-2xl overflow-hidden mb-8 slide-up" style="animation-delay: 0.1s">
-                                <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-white/50 dark:bg-gray-800/50">
-                                    <h3 class="text-lg font-semibold flex items-center">
-                                        <i class="fas fa-info-circle mr-2 text-indigo-600 dark:text-indigo-400"></i> Video Details
+                            <div class="glass card-hover rounded-2xl overflow-hidden mb-6 md:mb-8 slide-up" style="animation-delay: 0.1s">
+                                <div class="px-4 py-3 md:px-6 md:py-4 border-b border-gray-200 flex flex-col md:flex-row md:justify-between md:items-center bg-white/50">
+                                    <h3 class="text-lg font-semibold flex items-center mb-2 md:mb-0">
+                                        <i class="fas fa-info-circle mr-2 text-indigo-600"></i> Video Details
                                     </h3>
-                                    <button id="copyAllBtn" class="btn-hover px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition flex items-center text-sm copy-all-btn">
+                                    <button id="copyAllBtn" class="btn-hover px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition flex items-center justify-center text-sm copy-all-btn">
                                         <i class="fas fa-copy mr-2"></i> Copy All
                                     </button>
                                 </div>
-                                <div class="p-6 bg-white/30 dark:bg-gray-800/30">
-                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="p-4 md:p-6 bg-white/30">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 video-info-grid">
                                         <div>
-                                            <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Title</h4>
-                                            <p id="videoTitle" class="text-lg font-medium text-gray-800 dark:text-gray-100"></p>
+                                            <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Title</h4>
+                                            <p id="videoTitle" class="text-base md:text-lg font-medium text-gray-800"></p>
                                         </div>
                                         <div>
-                                            <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Channel</h4>
-                                            <p id="videoChannel" class="text-lg font-medium text-gray-800 dark:text-gray-100"></p>
+                                            <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Channel</h4>
+                                            <p id="videoChannel" class="text-base md:text-lg font-medium text-gray-800"></p>
                                         </div>
                                         <div>
-                                            <h4 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Published</h4>
-                                            <p id="videoDate" class="text-lg font-medium text-gray-800 dark:text-gray-100"></p>
+                                            <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Published</h4>
+                                            <p id="videoDate" class="text-base md:text-lg font-medium text-gray-800"></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Tag Generation Options -->
-                            <div id="tagOptions" class="glass card-hover rounded-2xl p-6 mb-8 hidden slide-up" style="animation-delay: 0.2s">
+                            <div id="tagOptions" class="glass card-hover rounded-2xl p-4 md:p-6 mb-6 md:mb-8 hidden slide-up" style="animation-delay: 0.2s">
                                 <h3 class="text-lg font-semibold mb-4 flex items-center">
-                                    <i class="fas fa-cogs mr-2 text-indigo-600 dark:text-indigo-400"></i> Tag Generation Options
+                                    <i class="fas fa-cogs mr-2 text-indigo-600"></i> Tag Generation Options
                                 </h3>
                                 
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 tag-options-grid">
                                     <!-- Owner Tags Option -->
-                                    <div class="bg-white/50 dark:bg-gray-800/50 p-5 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-500 transition-all card-hover">
-                                        <div class="flex items-start justify-between mb-4">
-                                            <div>
-                                                <h4 class="font-semibold text-lg flex items-center">
+                                    <div class="bg-white/50 p-4 md:p-5 rounded-xl border border-gray-200 hover:border-indigo-300 transition-all card-hover">
+                                        <div class="flex flex-col md:flex-row md:items-start justify-between mb-4">
+                                            <div class="mb-3 md:mb-0">
+                                                <h4 class="font-semibold text-base md:text-lg flex items-center">
                                                     <i class="fas fa-user-tag mr-2 text-blue-500"></i> Owner Tags
                                                 </h4>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Original tags added by the video creator</p>
+                                                <p class="text-sm text-gray-600 mt-1">Original tags added by the video creator</p>
                                             </div>
                                             <button 
                                                 id="ownerTagsBtn" 
-                                                class="btn-hover px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800 transition flex items-center text-sm show-tags-btn"
+                                                class="btn-hover px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition flex items-center justify-center text-sm show-tags-btn"
                                             >
                                                 <i class="fas fa-eye mr-2"></i> Show Tags
                                             </button>
                                         </div>
-                                        <div class="text-xs text-gray-500 dark:text-gray-500 flex items-center">
+                                        <div class="text-xs text-gray-500 flex items-center">
                                             <i class="fas fa-info-circle mr-2"></i> Typically 5-30 manually added tags
                                         </div>
                                     </div>
                                     
                                     <!-- AI Tags Option -->
-                                    <div class="bg-white/50 dark:bg-gray-800/50 p-5 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-500 transition-all card-hover">
-                                        <div class="flex items-start justify-between mb-4">
-                                            <div>
-                                                <h4 class="font-semibold text-lg flex items-center">
+                                    <div class="bg-white/50 p-4 md:p-5 rounded-xl border border-gray-200 hover:border-purple-300 transition-all card-hover">
+                                        <div class="flex flex-col md:flex-row md:items-start justify-between mb-4">
+                                            <div class="mb-3 md:mb-0">
+                                                <h4 class="font-semibold text-base md:text-lg flex items-center">
                                                     <i class="fas fa-robot mr-2 text-purple-500"></i> AI-Generated Tags
                                                 </h4>
-                                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">50+ relevant tags based on video content</p>
+                                                <p class="text-sm text-gray-600 mt-1">50+ relevant tags based on video content</p>
                                             </div>
                                             <button 
                                                 id="aiTagsBtn" 
-                                                class="btn-hover px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 rounded-lg hover:bg-purple-200 dark:hover:bg-purple-800 transition flex items-center text-sm generate-tags-btn"
+                                                class="btn-hover px-4 py-2 bg-purple-100 text-purple-600 rounded-lg hover:bg-purple-200 transition flex items-center justify-center text-sm generate-tags-btn"
                                             >
                                                 <i class="fas fa-bolt mr-2"></i> Generate
                                             </button>
@@ -407,7 +594,7 @@
                                                 type="text" 
                                                 id="keywordInput" 
                                                 placeholder="Add specific keywords (optional)" 
-                                                class="w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none transition text-sm"
+                                                class="w-full px-4 py-2 bg-gray-100 border border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:outline-none transition text-sm"
                                             >
                                         </div>
                                     </div>
@@ -415,27 +602,27 @@
                                 <div id="aiLoading" class="mt-6 text-center hidden">
                                     <div class="inline-flex flex-col items-center">
                                         <div class="loader mb-4"></div>
-                                        <p class="text-gray-600 dark:text-gray-400 font-medium">AI is generating 50+ optimized tags...</p>
+                                        <p class="text-gray-600 font-medium">AI is generating 50+ optimized tags...</p>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Owner Tags Results -->
-                            <div id="ownerTagsContainer" class="glass card-hover rounded-2xl overflow-hidden mb-8 hidden slide-up" style="animation-delay: 0.3s">
-                                <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-white/50 dark:bg-gray-800/50">
-                                    <div>
+                            <div id="ownerTagsContainer" class="glass card-hover rounded-2xl overflow-hidden mb-6 md:mb-8 hidden slide-up" style="animation-delay: 0.3s">
+                                <div class="px-4 py-3 md:px-6 md:py-4 border-b border-gray-200 flex flex-col md:flex-row md:justify-between md:items-center bg-white/50">
+                                    <div class="mb-2 md:mb-0">
                                         <h3 class="text-lg font-semibold flex items-center">
                                             <i class="fas fa-user-tag mr-2 text-blue-500"></i> Owner's Tags
-                                            <span id="ownerTagCount" class="ml-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-sm font-medium px-2.5 py-0.5 rounded-full">0</span>
+                                            <span id="ownerTagCount" class="ml-2 bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded-full">0</span>
                                         </h3>
                                     </div>
-                                    <button id="copyOwnerTagsBtn" class="btn-hover px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition flex items-center text-sm copy-owner-tags-btn">
+                                    <button id="copyOwnerTagsBtn" class="btn-hover px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition flex items-center justify-center text-sm copy-owner-tags-btn">
                                         <i class="fas fa-copy mr-2"></i> Copy Tags
                                     </button>
                                 </div>
-                                <div class="p-6 bg-white/30 dark:bg-gray-800/30">
-                                    <div id="ownerTagCloud" class="flex flex-wrap gap-3"></div>
-                                    <p id="noOwnerTagsMessage" class="text-gray-500 dark:text-gray-500 text-center py-8 hidden">
+                                <div class="p-4 md:p-6 bg-white/30">
+                                    <div id="ownerTagCloud" class="flex flex-wrap gap-2 md:gap-3"></div>
+                                    <p id="noOwnerTagsMessage" class="text-gray-500 text-center py-6 md:py-8 hidden">
                                         <i class="fas fa-tags mr-2"></i> No owner tags found for this video
                                     </p>
                                 </div>
@@ -443,20 +630,20 @@
 
                             <!-- AI Generated Tags Results -->
                             <div id="aiTagsContainer" class="glass card-hover rounded-2xl overflow-hidden hidden slide-up" style="animation-delay: 0.4s">
-                                <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-white/50 dark:bg-gray-800/50">
-                                    <div>
+                                <div class="px-4 py-3 md:px-6 md:py-4 border-b border-gray-200 flex flex-col md:flex-row md:justify-between md:items-center bg-white/50">
+                                    <div class="mb-2 md:mb-0">
                                         <h3 class="text-lg font-semibold flex items-center">
                                             <i class="fas fa-robot mr-2 text-purple-500"></i> AI-Generated Tags (50+)
-                                            <span id="aiTagCount" class="ml-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 text-sm font-medium px-2.5 py-0.5 rounded-full">0</span>
+                                            <span id="aiTagCount" class="ml-2 bg-purple-100 text-purple-800 text-sm font-medium px-2.5 py-0.5 rounded-full">0</span>
                                         </h3>
-                                        <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">Generated based on video content and your keywords</p>
+                                        <p class="text-xs text-gray-500 mt-1">Generated based on video content and your keywords</p>
                                     </div>
-                                    <button id="copyAiTagsBtn" class="btn-hover px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-white rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition flex items-center text-sm copy-ai-tags-btn">
+                                    <button id="copyAiTagsBtn" class="btn-hover px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition flex items-center justify-center text-sm copy-ai-tags-btn">
                                         <i class="fas fa-copy mr-2"></i> Copy Tags
                                     </button>
                                 </div>
-                                <div class="p-6 bg-white/30 dark:bg-gray-800/30">
-                                    <div id="aiTagCloud" class="flex flex-wrap gap-3"></div>
+                                <div class="p-4 md:p-6 bg-white/30">
+                                    <div id="aiTagCloud" class="flex flex-wrap gap-2 md:gap-3"></div>
                                 </div>
                             </div>
                         </div>
@@ -466,26 +653,26 @@
         </main>
 
         <!-- Features Section -->
-        <section class="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900/50 dark:to-gray-900">
-            <div class="container mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Supercharge Your YouTube Growth</h2>
-                    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+        <section class="py-12 px-4 bg-gradient-to-b from-gray-50 to-white">
+            <div class="container mx-auto">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-2xl md:text-4xl font-bold mb-4">Supercharge Your YouTube Growth</h2>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                         Advanced tools to help you rank higher and get more views
                     </p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 features-grid">
                     <!-- Feature 1 -->
-                    <div class="glass card-hover p-8 rounded-2xl hover:shadow-xl transition-all duration-300 slide-up" style="animation-delay: 0.1s">
-                        <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                            <i class="fas fa-tags text-2xl text-white"></i>
+                    <div class="glass card-hover p-6 md:p-8 rounded-2xl hover:shadow-xl transition-all duration-300 slide-up" style="animation-delay: 0.1s">
+                        <div class="w-14 h-14 md:w-16 md:h-16 gradient-bg rounded-xl flex items-center justify-center mb-4 md:mb-6 shadow-lg">
+                            <i class="fas fa-tags text-xl md:text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Precision Tag Extraction</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3">Precision Tag Extraction</h3>
+                        <p class="text-gray-600 mb-4">
                             Get the exact tags successful creators are using in your niche, extracted directly from YouTube's API.
                         </p>
-                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <ul class="space-y-2 text-sm text-gray-600">
                             <li class="flex items-center">
                                 <i class="fas fa-check-circle text-green-500 mr-2"></i> See competitor strategies
                             </li>
@@ -499,15 +686,15 @@
                     </div>
                     
                     <!-- Feature 2 -->
-                    <div class="glass card-hover p-8 rounded-2xl hover:shadow-xl transition-all duration-300 slide-up" style="animation-delay: 0.2s">
-                        <div class="w-16 h-16 orange-gradient rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                            <i class="fas fa-brain text-2xl text-white"></i>
+                    <div class="glass card-hover p-6 md:p-8 rounded-2xl hover:shadow-xl transition-all duration-300 slide-up" style="animation-delay: 0.2s">
+                        <div class="w-14 h-14 md:w-16 md:h-16 orange-gradient rounded-xl flex items-center justify-center mb-4 md:mb-6 shadow-lg">
+                            <i class="fas fa-brain text-xl md:text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">AI-Powered Generation</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3">AI-Powered Generation</h3>
+                        <p class="text-gray-600 mb-4">
                             Our advanced AI analyzes video content to generate 50+ high-potential tags you might have missed.
                         </p>
-                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <ul class="space-y-2 text-sm text-gray-600">
                             <li class="flex items-center">
                                 <i class="fas fa-check-circle text-green-500 mr-2"></i> Context-aware suggestions
                             </li>
@@ -521,15 +708,15 @@
                     </div>
                     
                     <!-- Feature 3 -->
-                    <div class="glass card-hover p-8 rounded-2xl hover:shadow-xl transition-all duration-300 slide-up" style="animation-delay: 0.3s">
-                        <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                            <i class="fas fa-chart-line text-2xl text-white"></i>
+                    <div class="glass card-hover p-6 md:p-8 rounded-2xl hover:shadow-xl transition-all duration-300 slide-up" style="animation-delay: 0.3s">
+                        <div class="w-14 h-14 md:w-16 md:h-16 gradient-bg rounded-xl flex items-center justify-center mb-4 md:mb-6 shadow-lg">
+                            <i class="fas fa-chart-line text-xl md:text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Performance Analytics</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        <h3 class="text-lg md:text-xl font-semibold mb-3">Performance Analytics</h3>
+                        <p class="text-gray-600 mb-4">
                             Track which tags perform best and get recommendations to improve your video discoverability.
                         </p>
-                        <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <ul class="space-y-2 text-sm text-gray-600">
                             <li class="flex items-center">
                                 <i class="fas fa-check-circle text-green-500 mr-2"></i> Tag effectiveness scoring
                             </li>
@@ -546,681 +733,662 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="py-16 orange-gradient text-white">
-            <div class="container mx-auto px-4 text-center">
-                <div class="max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Boost Your YouTube Views?</h2>
-                    <p class="text-xl text-amber-100 mb-8">
-                        Start using YouTube Tag Genius PRO today and get more eyes on your content
+        <section class="py-12 px-4 orange-gradient text-white">
+           <div class="container mx-auto text-center"> 
+	<div class="max-w-3xl mx-auto"> 
+	<h2 class="text-2xl md:text-4xl font-bold mb-6">Ready to Boost Your YouTube Views?</h2>
+		 <p class="text-lg md:text-xl text-amber-100 mb-6 md:mb-8"> Start using YouTube Tag Genius PRO today and 		get more eyes on your content </p> 
+		<div class="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 cta-buttons"> 
+		<button class="btn-primary px-6 py-3 md:px-8 md:py-4 text-white rounded-xl font-bold shadow-lg 					hover:shadow-xl transition-all get-started-btn"> 
+		<i class="fas fa-rocket mr-2"></i> Get Started Free </button> 
+	<button class="btn-secondary px-6 py-3 md:px-8 md:py-4 text-white rounded-xl font-bold shadow-lg hover:shadow-xl 		transition-all border border-orange-300 watch-demo-btn-2"> <i class="fas fa-play-circle mr-2"></i> Watch 		Demo </button>
+	 </div> 
+	</div> 
+	</div> 
+	</section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-8 footer-grid">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="logo.png" alt="YouTube Tag Genius Logo" class="logo mr-3">
+                        <span class="text-xl font-bold text-white">Tag Genius</span>
+                    </div>
+                    <p class="mb-4">
+                        The most advanced YouTube tag research and generation tool for content creators.
                     </p>
-                    <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <button class="btn-primary px-8 py-4 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all get-started-btn">
-                            <i class="fas fa-rocket mr-2"></i> Get Started Free
-                        </button>
-                        <button class="btn-secondary px-8 py-4 text-white rounded-xl font-bold shadow-lg hover:shadow-xl transition-all border border-orange-300 watch-demo-btn-2">
-                            <i class="fas fa-play-circle mr-2"></i> Watch Demo
-                        </button>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition hover:scale-110 social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition hover:scale-110 social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition hover:scale-110 social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Features</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">API</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Changelog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Documentation</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">YouTube SEO Guide</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">About</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Privacy</a></li>
+                        <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Terms</a></li>
+                    </ul>
                 </div>
             </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-gray-900 text-gray-400 py-12">
-            <div class="container mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-8">
-                    <div>
-                        <div class="flex items-center mb-4">
-                            <img src="logo.png" alt="YouTube Tag Genius Logo" class="logo mr-3">
-                            <span class="text-xl font-bold text-white">Tag Genius</span>
-                        </div>
-                        <p class="mb-4">
-                            The most advanced YouTube tag research and generation tool for content creators.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition hover:scale-110 social-link">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition hover:scale-110 social-link">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition hover:scale-110 social-link">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-semibold text-lg mb-4">Product</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Features</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Pricing</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">API</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Changelog</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-semibold text-lg mb-4">Resources</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Documentation</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">YouTube SEO Guide</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Blog</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Support</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-semibold text-lg mb-4">Company</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">About</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Careers</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Privacy</a></li>
-                            <li><a href="#" class="hover:text-white transition hover:translate-x-1 block footer-link">Terms</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="border-t border-gray-800 pt-8 text-center">
-                    <p>&copy; 2023 YouTube Tag Genius. All rights reserved.</p>
-                </div>
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p>&copy; 2023 YouTube Tag Genius. All rights reserved.</p>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+</div>
 
-    <!-- Copy Notification -->
-    <div id="copyNotification" class="copy-notification bg-green-600 text-white font-medium">
-        <i class="fas fa-check-circle mr-2"></i> Copied to clipboard!
-    </div>
+<!-- Copy Notification -->
+<div id="copyNotification" class="copy-notification bg-green-600 text-white font-medium">
+    <i class="fas fa-check-circle mr-2"></i> Copied to clipboard!
+</div>
 
-    <script>
-        // Theme Toggle - Fixed Version
-        const themeToggle = document.getElementById('themeToggle');
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-        
-        // Check for saved theme preference or use system preference
-        let currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
-            document.body.classList.add('dark');
-            currentTheme = 'dark';
-        } else {
-            currentTheme = 'light';
+<script>
+    // Mobile Menu Toggle
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    
+    function toggleMobileMenu() {
+        burgerBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    }
+    
+    burgerBtn.addEventListener('click', toggleMobileMenu);
+    closeMenuBtn.addEventListener('click', toggleMobileMenu);
+    menuOverlay.addEventListener('click', toggleMobileMenu);
+
+    // Adsterra link
+    const ADSTERRA_LINK = "https://www.profitableratecpm.com/spdp902bq?key=94ad4cbdb9eeacd538ac4df9a2702f96";
+    
+    // Track clicked buttons
+    const clickedButtons = new Set();
+    
+    // Function to handle ad display
+    function showAdBeforeAction(buttonId, callback) {
+        if (!clickedButtons.has(buttonId)) {
+            // First click - open ad in new tab
+            clickedButtons.add(buttonId);
+            const adWindow = window.open(ADSTERRA_LINK, '_blank');
+            
+            // Focus back to original window after a short delay
+            setTimeout(() => {
+                window.focus();
+                
+                // Execute callback if provided
+                if (callback && typeof callback === 'function') {
+                    callback();
+                }
+            }, 1000);
+            
+            return false;
         }
         
-        themeToggle.addEventListener('click', () => {
-            if (document.body.classList.contains('dark')) {
-                document.body.classList.remove('dark');
-                currentTheme = 'light';
-            } else {
-                document.body.classList.add('dark');
-                currentTheme = 'dark';
-            }
-            localStorage.setItem('theme', currentTheme);
-            
-            // Animate the toggle
-            gsap.from(themeToggle, {
-                scale: 0.8,
-                duration: 0.3,
-                ease: "back.out(1.7)"
+        // Subsequent clicks - proceed with normal action
+        return true;
+    }
+    
+    // Initialize GSAP animations
+    gsap.registerEffect({
+        name: "fadeIn",
+        effect: (targets, config) => {
+            return gsap.from(targets, {
+                opacity: 0,
+                y: 20,
+                duration: config.duration,
+                ease: "power2.out",
+                stagger: config.stagger
             });
-        });
+        },
+        defaults: { duration: 0.6, stagger: 0.1 }
+    });
 
-        // Adsterra link
-        const ADSTERRA_LINK = "https://www.profitableratecpm.com/spdp902bq?key=94ad4cbdb9eeacd538ac4df9a2702f96";
-        
-        // Track clicked buttons
-        const clickedButtons = new Set();
-        
-        // Function to handle ad display
-        function showAdBeforeAction(buttonId, callback) {
-            if (!clickedButtons.has(buttonId)) {
-                // First click - open ad in new tab
-                clickedButtons.add(buttonId);
-                const adWindow = window.open(ADSTERRA_LINK, '_blank');
-                
-                // Focus back to original window after a short delay
-                setTimeout(() => {
-                    window.focus();
-                    
-                    // Execute callback if provided
-                    if (callback && typeof callback === 'function') {
-                        callback();
-                    }
-                }, 1000);
-                
+    // DOM Elements
+    const videoUrlInput = document.getElementById('videoUrl');
+    const extractBtn = document.getElementById('extractBtn');
+    const errorContainer = document.getElementById('errorContainer');
+    const errorMessage = document.getElementById('errorMessage');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const resultsContainer = document.getElementById('resultsContainer');
+    const videoTitle = document.getElementById('videoTitle');
+    const videoChannel = document.getElementById('videoChannel');
+    const videoDate = document.getElementById('videoDate');
+    const copyAllBtn = document.getElementById('copyAllBtn');
+    const copyNotification = document.getElementById('copyNotification');
+    
+    // Tag Options Elements
+    const tagOptions = document.getElementById('tagOptions');
+    const ownerTagsBtn = document.getElementById('ownerTagsBtn');
+    const aiTagsBtn = document.getElementById('aiTagsBtn');
+    const keywordInput = document.getElementById('keywordInput');
+    const aiLoading = document.getElementById('aiLoading');
+    
+    // Owner Tags Elements
+    const ownerTagsContainer = document.getElementById('ownerTagsContainer');
+    const ownerTagCloud = document.getElementById('ownerTagCloud');
+    const ownerTagCount = document.getElementById('ownerTagCount');
+    const noOwnerTagsMessage = document.getElementById('noOwnerTagsMessage');
+    const copyOwnerTagsBtn = document.getElementById('copyOwnerTagsBtn');
+    
+    // AI Tags Elements
+    const aiTagsContainer = document.getElementById('aiTagsContainer');
+    const aiTagCloud = document.getElementById('aiTagCloud');
+    const aiTagCount = document.getElementById('aiTagCount');
+    const copyAiTagsBtn = document.getElementById('copyAiTagsBtn');
+
+    // YouTube API key
+    const API_KEY = 'AIzaSyCl2XLMeUp98QUT-wJfcZ9mr86blSIAuxE';
+
+    // Store video data
+    let currentVideoData = null;
+
+    // Add click handlers for all buttons with ad functionality
+    document.querySelectorAll('.try-it-btn, .watch-demo-btn, .analyze-btn, .copy-all-btn, .show-tags-btn, .generate-tags-btn, .copy-owner-tags-btn, .copy-ai-tags-btn, .get-started-btn, .watch-demo-btn-2, .social-link, .footer-link, .nav-link').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const buttonId = this.id || this.className.replace(/btn|link|-|hover/g, '').trim();
+            
+            if (!showAdBeforeAction(buttonId, () => {
+                // If you need to do something after the ad is shown
+            })) {
+                e.preventDefault();
+                e.stopPropagation();
                 return false;
             }
             
-            // Subsequent clicks - proceed with normal action
-            return true;
+            // For links that should still navigate after ad is shown
+            if (this.tagName === 'A') {
+                return true;
+            }
+        });
+    });
+
+    // Event Listeners with ad integration
+    extractBtn.addEventListener('click', function(e) {
+        if (!showAdBeforeAction('extractBtn', extractTags)) {
+            e.preventDefault();
+            return;
         }
+        extractTags();
+    });
+    
+    ownerTagsBtn.addEventListener('click', function(e) {
+        if (!showAdBeforeAction('ownerTagsBtn', showOwnerTags)) {
+            e.preventDefault();
+            return;
+        }
+        showOwnerTags();
+    });
+    
+    aiTagsBtn.addEventListener('click', function(e) {
+        if (!showAdBeforeAction('aiTagsBtn', generateAiTags)) {
+            e.preventDefault();
+            return;
+        }
+        generateAiTags();
+    });
+    
+    copyOwnerTagsBtn.addEventListener('click', function(e) {
+        if (!showAdBeforeAction('copyOwnerTagsBtn', copyOwnerTags)) {
+            e.preventDefault();
+            return;
+        }
+        copyOwnerTags();
+    });
+    
+    copyAiTagsBtn.addEventListener('click', function(e) {
+        if (!showAdBeforeAction('copyAiTagsBtn', copyAiTags)) {
+            e.preventDefault();
+            return;
+        }
+        copyAiTags();
+    });
+    
+    copyAllBtn.addEventListener('click', function(e) {
+        if (!showAdBeforeAction('copyAllBtn', copyAllInfo)) {
+            e.preventDefault();
+            return;
+        }
+        copyAllInfo();
+    });
+
+    // Tag color classes
+    const ownerTagColors = [
+        'bg-blue-100 text-blue-800 hover:bg-blue-200',
+        'bg-blue-200 text-blue-900 hover:bg-blue-300'
+    ];
+
+    const aiTagColors = [
+        'bg-purple-100 text-purple-800 hover:bg-purple-200',
+        'bg-fuchsia-100 text-fuchsia-800 hover:bg-fuchsia-200',
+        'bg-violet-100 text-violet-800 hover:bg-violet-200'
+    ];
+
+    // Main Functions
+    function extractTags() {
+        const url = videoUrlInput.value.trim();
         
-        // Initialize GSAP animations
-        gsap.registerEffect({
-            name: "fadeIn",
-            effect: (targets, config) => {
-                return gsap.from(targets, {
-                    opacity: 0,
-                    y: 20,
-                    duration: config.duration,
-                    ease: "power2.out",
-                    stagger: config.stagger
-                });
-            },
-            defaults: { duration: 0.6, stagger: 0.1 }
-        });
-
-        // DOM Elements
-        const videoUrlInput = document.getElementById('videoUrl');
-        const extractBtn = document.getElementById('extractBtn');
-        const errorContainer = document.getElementById('errorContainer');
-        const errorMessage = document.getElementById('errorMessage');
-        const loadingSpinner = document.getElementById('loadingSpinner');
-        const resultsContainer = document.getElementById('resultsContainer');
-        const videoTitle = document.getElementById('videoTitle');
-        const videoChannel = document.getElementById('videoChannel');
-        const videoDate = document.getElementById('videoDate');
-        const copyAllBtn = document.getElementById('copyAllBtn');
-        const copyNotification = document.getElementById('copyNotification');
-        
-        // Tag Options Elements
-        const tagOptions = document.getElementById('tagOptions');
-        const ownerTagsBtn = document.getElementById('ownerTagsBtn');
-        const aiTagsBtn = document.getElementById('aiTagsBtn');
-        const keywordInput = document.getElementById('keywordInput');
-        const aiLoading = document.getElementById('aiLoading');
-        
-        // Owner Tags Elements
-        const ownerTagsContainer = document.getElementById('ownerTagsContainer');
-        const ownerTagCloud = document.getElementById('ownerTagCloud');
-        const ownerTagCount = document.getElementById('ownerTagCount');
-        const noOwnerTagsMessage = document.getElementById('noOwnerTagsMessage');
-        const copyOwnerTagsBtn = document.getElementById('copyOwnerTagsBtn');
-        
-        // AI Tags Elements
-        const aiTagsContainer = document.getElementById('aiTagsContainer');
-        const aiTagCloud = document.getElementById('aiTagCloud');
-        const aiTagCount = document.getElementById('aiTagCount');
-        const copyAiTagsBtn = document.getElementById('copyAiTagsBtn');
-
-        // YouTube API key
-        const API_KEY = 'AIzaSyCl2XLMeUp98QUT-wJfcZ9mr86blSIAuxE';
-
-        // Store video data
-        let currentVideoData = null;
-
-        // Add click handlers for all buttons with ad functionality
-        document.querySelectorAll('.try-it-btn, .watch-demo-btn, .analyze-btn, .copy-all-btn, .show-tags-btn, .generate-tags-btn, .copy-owner-tags-btn, .copy-ai-tags-btn, .get-started-btn, .watch-demo-btn-2, .social-link, .footer-link, .nav-link').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const buttonId = this.id || this.className.replace(/btn|link|-|hover/g, '').trim();
-                
-                if (!showAdBeforeAction(buttonId, () => {
-                    // If you need to do something after the ad is shown
-                })) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                }
-                
-                // For links that should still navigate after ad is shown
-                if (this.tagName === 'A') {
-                    return true;
-                }
-            });
-        });
-
-        // Event Listeners with ad integration
-        extractBtn.addEventListener('click', function(e) {
-            if (!showAdBeforeAction('extractBtn', extractTags)) {
-                e.preventDefault();
-                return;
-            }
-            extractTags();
-        });
-        
-        ownerTagsBtn.addEventListener('click', function(e) {
-            if (!showAdBeforeAction('ownerTagsBtn', showOwnerTags)) {
-                e.preventDefault();
-                return;
-            }
-            showOwnerTags();
-        });
-        
-        aiTagsBtn.addEventListener('click', function(e) {
-            if (!showAdBeforeAction('aiTagsBtn', generateAiTags)) {
-                e.preventDefault();
-                return;
-            }
-            generateAiTags();
-        });
-        
-        copyOwnerTagsBtn.addEventListener('click', function(e) {
-            if (!showAdBeforeAction('copyOwnerTagsBtn', copyOwnerTags)) {
-                e.preventDefault();
-                return;
-            }
-            copyOwnerTags();
-        });
-        
-        copyAiTagsBtn.addEventListener('click', function(e) {
-            if (!showAdBeforeAction('copyAiTagsBtn', copyAiTags)) {
-                e.preventDefault();
-                return;
-            }
-            copyAiTags();
-        });
-        
-        copyAllBtn.addEventListener('click', function(e) {
-            if (!showAdBeforeAction('copyAllBtn', copyAllInfo)) {
-                e.preventDefault();
-                return;
-            }
-            copyAllInfo();
-        });
-
-        // Tag color classes
-        const ownerTagColors = [
-            'bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900/50 dark:text-blue-200 dark:hover:bg-blue-800/50',
-            'bg-blue-200 text-blue-900 hover:bg-blue-300 dark:bg-blue-800/50 dark:text-blue-100 dark:hover:bg-blue-700/50'
-        ];
-
-        const aiTagColors = [
-            'bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900/50 dark:text-purple-200 dark:hover:bg-purple-800/50',
-            'bg-fuchsia-100 text-fuchsia-800 hover:bg-fuchsia-200 dark:bg-fuchsia-900/50 dark:text-fuchsia-200 dark:hover:bg-fuchsia-800/50',
-            'bg-violet-100 text-violet-800 hover:bg-violet-200 dark:bg-violet-900/50 dark:text-violet-200 dark:hover:bg-violet-800/50'
-        ];
-
-        // Main Functions
-        function extractTags() {
-            const url = videoUrlInput.value.trim();
-            
-            if (!url) {
-                showError('Please enter a YouTube video URL');
-                return;
-            }
-
-            const videoId = extractVideoId(url);
-            if (!videoId) {
-                showError('Invalid YouTube URL. Please enter a valid YouTube video URL.');
-                return;
-            }
-
-            clearResults();
-            hideError();
-            showLoading();
-
-            // Animate the extract button
-            gsap.to(extractBtn, {
-                scale: 0.95,
-                duration: 0.1,
-                yoyo: true,
-                repeat: 1
-            });
-
-            fetchVideoData(videoId);
+        if (!url) {
+            showError('Please enter a YouTube video URL');
+            return;
         }
 
-        function extractVideoId(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = url.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : null;
+        const videoId = extractVideoId(url);
+        if (!videoId) {
+            showError('Invalid YouTube URL. Please enter a valid YouTube video URL.');
+            return;
         }
 
-        async function fetchVideoData(videoId) {
-            try {
-                const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${API_KEY}`);
-                const data = await response.json();
+        clearResults();
+        hideError();
+        showLoading();
 
-                if (!response.ok) throw new Error(data.error.message || 'Failed to fetch video data');
-                if (data.items.length === 0) throw new Error('Video not found. Please check the URL and try again.');
+        // Animate the extract button
+        gsap.to(extractBtn, {
+            scale: 0.95,
+            duration: 0.1,
+            yoyo: true,
+            repeat: 1
+        });
 
-                currentVideoData = data.items[0].snippet;
-                displayVideoInfo(currentVideoData);
-                showTagOptions();
-            } catch (error) {
-                showError(error.message);
-                hideLoading();
-            }
-        }
+        fetchVideoData(videoId);
+    }
 
-        function displayVideoInfo(videoData) {
+    function extractVideoId(url) {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    }
+
+    async function fetchVideoData(videoId) {
+        try {
+            const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${API_KEY}`);
+            const data = await response.json();
+
+            if (!response.ok) throw new Error(data.error.message || 'Failed to fetch video data');
+            if (data.items.length === 0) throw new Error('Video not found. Please check the URL and try again.');
+
+            currentVideoData = data.items[0].snippet;
+            displayVideoInfo(currentVideoData);
+            showTagOptions();
+        } catch (error) {
+            showError(error.message);
             hideLoading();
+        }
+    }
 
-            // Display basic video info with animation
-            gsap.to(resultsContainer, {
-                opacity: 1,
-                display: 'block',
-                duration: 0.5
-            });
+    function displayVideoInfo(videoData) {
+        hideLoading();
 
-            videoTitle.textContent = videoData.title || 'No title available';
-            videoChannel.textContent = videoData.channelTitle || 'Unknown channel';
+        // Display basic video info with animation
+        gsap.to(resultsContainer, {
+            opacity: 1,
+            display: 'block',
+            duration: 0.5
+        });
+
+        videoTitle.textContent = videoData.title || 'No title available';
+        videoChannel.textContent = videoData.channelTitle || 'Unknown channel';
+        
+        const publishedDate = new Date(videoData.publishedAt);
+        videoDate.textContent = publishedDate.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+
+        // Animate the video info section
+        gsap.from("#resultsContainer > div", {
+            opacity: 0,
+            y: 20,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(1.2)"
+        });
+    }
+
+    function showTagOptions() {
+        tagOptions.style.display = 'block';
+        gsap.from(tagOptions, {
+            opacity: 0,
+            y: 20,
+            duration: 0.6,
+            delay: 0.3,
+            ease: "back.out(1.2)"
+        });
+    }
+
+    function showOwnerTags() {
+        if (!currentVideoData) return;
+        
+        // Animate the button click
+        gsap.to(ownerTagsBtn, {
+            scale: 0.9,
+            duration: 0.1,
+            yoyo: true,
+            repeat: 1
+        });
+
+        if (currentVideoData.tags && currentVideoData.tags.length > 0) {
+            ownerTagCount.textContent = currentVideoData.tags.length;
+            renderTagCloud(currentVideoData.tags, ownerTagCloud, ownerTagColors);
+            noOwnerTagsMessage.classList.add('hidden');
+        } else {
+            ownerTagCount.textContent = '0';
+            ownerTagCloud.innerHTML = '';
+            noOwnerTagsMessage.classList.remove('hidden');
+        }
+        
+        ownerTagsContainer.style.display = 'block';
+        gsap.from(ownerTagsContainer, {
+            opacity: 0,
+            y: 20,
+            duration: 0.6,
+            ease: "back.out(1.2)"
+        });
+    }
+
+    function generateAiTags() {
+        const keywords = keywordInput.value.trim();
+        
+        // Animate the button click
+        gsap.to(aiTagsBtn, {
+            scale: 0.9,
+            duration: 0.1,
+            yoyo: true,
+            repeat: 1
+        });
+
+        aiLoading.style.display = 'block';
+        aiTagsContainer.style.display = 'none';
+
+        // Simulate AI processing (in a real app, this would call an AI API)
+        setTimeout(() => {
+            const videoTitleText = currentVideoData.title;
+            const baseTags = currentVideoData.tags || [];
             
-            const publishedDate = new Date(videoData.publishedAt);
-            videoDate.textContent = publishedDate.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-
-            // Animate the video info section
-            gsap.from("#resultsContainer > div", {
+            // Generate AI tags based on video title and optional keywords
+            const aiTags = generateSmartTags(videoTitleText, keywords, baseTags);
+            
+            renderTagCloud(aiTags, aiTagCloud, aiTagColors);
+            aiTagCount.textContent = aiTags.length;
+            aiLoading.style.display = 'none';
+            aiTagsContainer.style.display = 'block';
+            
+            // Animate the AI tags appearance
+            gsap.from(aiTagsContainer, {
                 opacity: 0,
                 y: 20,
                 duration: 0.6,
-                stagger: 0.1,
                 ease: "back.out(1.2)"
             });
+        }, 1500);
+    }
+
+    // This simulates an AI tag generator - in a real app you would call an AI API
+    function generateSmartTags(title, keywords, existingTags) {
+        const commonTags = [
+            "youtube", "video", "2023", "new", "trending", "viral",
+            "tutorial", "howto", "guide", "tips", "tricks", "hacks",
+            "beginner", "advanced", "expert", "lesson", "education",
+            "review", "unboxing", "reaction", "comparison", "test",
+            "entertainment", "funny", "comedy", "prank", "challenge",
+            "vlog", "daily", "life", "routine", "travel", "adventure",
+            "tech", "gadgets", "electronics", "smartphone", "camera",
+            "gaming", "gameplay", "walkthrough", "livestream", "esports",
+            "music", "song", "cover", "remix", "instrumental", "lyrics",
+            "fitness", "workout", "exercise", "diet", "health", "wellness",
+            "cooking", "recipe", "food", "meal", "dinner", "breakfast",
+            "beauty", "makeup", "skincare", "hair", "fashion", "style"
+        ];
+        
+        // Extract words from title
+        const titleWords = title.toLowerCase()
+            .split(/\s+/)
+            .filter(word => word.length > 3)
+            .map(word => word.replace(/[^a-z0-9]/g, ''));
+        
+        // Process keywords
+        const keywordTags = keywords ? 
+            keywords.split(',')
+                .map(k => k.trim().toLowerCase())
+                .filter(k => k.length > 0) : [];
+        
+        // Combine all sources and remove duplicates
+        let allTags = [...new Set([
+            ...titleWords,
+            ...keywordTags,
+            ...commonTags,
+            ...(existingTags || []).map(t => t.toLowerCase())
+        ])].filter(tag => tag.length > 2);
+        
+        // Add some variations
+        const variations = allTags.flatMap(tag => {
+            const variants = [];
+            if (tag.endsWith('s')) variants.push(tag.slice(0, -1)); // plural to singular
+            if (!tag.endsWith('s')) variants.push(tag + 's'); // singular to plural
+            if (tag.includes(' ')) variants.push(tag.replace(/\s+/g, '')); // remove spaces
+            return variants;
+        });
+        
+        allTags = [...new Set([...allTags, ...variations])];
+        
+        // Shuffle and return 50+ tags
+        return shuffleArray(allTags).slice(0, 50 + Math.floor(Math.random() * 10));
+    }
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
+        return array;
+    }
 
-        function showTagOptions() {
-            tagOptions.style.display = 'block';
-            gsap.from(tagOptions, {
-                opacity: 0,
-                y: 20,
-                duration: 0.6,
-                delay: 0.3,
-                ease: "back.out(1.2)"
-            });
-        }
-
-        function showOwnerTags() {
-            if (!currentVideoData) return;
+    function renderTagCloud(tags, container, colors) {
+        container.innerHTML = '';
+        
+        tags.forEach((tag, index) => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            const tagElement = document.createElement('span');
+            tagElement.className = `tag ${randomColor} cursor-pointer rounded-full px-3 py-1.5 text-sm font-medium`;
+            tagElement.textContent = tag;
+            tagElement.title = `Click to copy "${tag}"`;
+            tagElement.style.opacity = 0;
+            tagElement.style.transform = "scale(0)";
             
-            // Animate the button click
-            gsap.to(ownerTagsBtn, {
-                scale: 0.9,
-                duration: 0.1,
-                yoyo: true,
-                repeat: 1
-            });
-
-            if (currentVideoData.tags && currentVideoData.tags.length > 0) {
-                ownerTagCount.textContent = currentVideoData.tags.length;
-                renderTagCloud(currentVideoData.tags, ownerTagCloud, ownerTagColors);
-                noOwnerTagsMessage.classList.add('hidden');
-            } else {
-                ownerTagCount.textContent = '0';
-                ownerTagCloud.innerHTML = '';
-                noOwnerTagsMessage.classList.remove('hidden');
-            }
-            
-            ownerTagsContainer.style.display = 'block';
-            gsap.from(ownerTagsContainer, {
-                opacity: 0,
-                y: 20,
-                duration: 0.6,
-                ease: "back.out(1.2)"
-            });
-        }
-
-        function generateAiTags() {
-            const keywords = keywordInput.value.trim();
-            
-            // Animate the button click
-            gsap.to(aiTagsBtn, {
-                scale: 0.9,
-                duration: 0.1,
-                yoyo: true,
-                repeat: 1
-            });
-
-            aiLoading.style.display = 'block';
-            aiTagsContainer.style.display = 'none';
-
-            // Simulate AI processing (in a real app, this would call an AI API)
-            setTimeout(() => {
-                const videoTitleText = currentVideoData.title;
-                const baseTags = currentVideoData.tags || [];
+            tagElement.addEventListener('click', () => {
+                navigator.clipboard.writeText(tag);
+                showCopyNotification();
                 
-                // Generate AI tags based on video title and optional keywords
-                const aiTags = generateSmartTags(videoTitleText, keywords, baseTags);
-                
-                renderTagCloud(aiTags, aiTagCloud, aiTagColors);
-                aiTagCount.textContent = aiTags.length;
-                aiLoading.style.display = 'none';
-                aiTagsContainer.style.display = 'block';
-                
-                // Animate the AI tags appearance
-                gsap.from(aiTagsContainer, {
-                    opacity: 0,
-                    y: 20,
-                    duration: 0.6,
-                    ease: "back.out(1.2)"
-                });
-            }, 1500);
-        }
-
-        // This simulates an AI tag generator - in a real app you would call an AI API
-        function generateSmartTags(title, keywords, existingTags) {
-            const commonTags = [
-                "youtube", "video", "2023", "new", "trending", "viral",
-                "tutorial", "howto", "guide", "tips", "tricks", "hacks",
-                "beginner", "advanced", "expert", "lesson", "education",
-                "review", "unboxing", "reaction", "comparison", "test",
-                "entertainment", "funny", "comedy", "prank", "challenge",
-                "vlog", "daily", "life", "routine", "travel", "adventure",
-                "tech", "gadgets", "electronics", "smartphone", "camera",
-                "gaming", "gameplay", "walkthrough", "livestream", "esports",
-                "music", "song", "cover", "remix", "instrumental", "lyrics",
-                "fitness", "workout", "exercise", "diet", "health", "wellness",
-                "cooking", "recipe", "food", "meal", "dinner", "breakfast",
-                "beauty", "makeup", "skincare", "hair", "fashion", "style"
-            ];
-            
-            // Extract words from title
-            const titleWords = title.toLowerCase()
-                .split(/\s+/)
-                .filter(word => word.length > 3)
-                .map(word => word.replace(/[^a-z0-9]/g, ''));
-            
-            // Process keywords
-            const keywordTags = keywords ? 
-                keywords.split(',')
-                    .map(k => k.trim().toLowerCase())
-                    .filter(k => k.length > 0) : [];
-            
-            // Combine all sources and remove duplicates
-            let allTags = [...new Set([
-                ...titleWords,
-                ...keywordTags,
-                ...commonTags,
-                ...(existingTags || []).map(t => t.toLowerCase())
-            ])].filter(tag => tag.length > 2);
-            
-            // Add some variations
-            const variations = allTags.flatMap(tag => {
-                const variants = [];
-                if (tag.endsWith('s')) variants.push(tag.slice(0, -1)); // plural to singular
-                if (!tag.endsWith('s')) variants.push(tag + 's'); // singular to plural
-                if (tag.includes(' ')) variants.push(tag.replace(/\s+/g, '')); // remove spaces
-                return variants;
-            });
-            
-            allTags = [...new Set([...allTags, ...variations])];
-            
-            // Shuffle and return 50+ tags
-            return shuffleArray(allTags).slice(0, 50 + Math.floor(Math.random() * 10));
-        }
-
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        function renderTagCloud(tags, container, colors) {
-            container.innerHTML = '';
-            
-            tags.forEach((tag, index) => {
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                const tagElement = document.createElement('span');
-                tagElement.className = `tag ${randomColor} cursor-pointer rounded-full px-3 py-1.5 text-sm font-medium`;
-                tagElement.textContent = tag;
-                tagElement.title = `Click to copy "${tag}"`;
-                tagElement.style.opacity = 0;
-                tagElement.style.transform = "scale(0)";
-                
-                tagElement.addEventListener('click', () => {
-                    navigator.clipboard.writeText(tag);
-                    showCopyNotification();
-                    
-                    // Animate the clicked tag
-                    gsap.to(tagElement, {
-                        scale: 1.2,
-                        duration: 0.2,
-                        yoyo: true,
-                        repeat: 1
-                    });
-                });
-                
-                container.appendChild(tagElement);
-                
-                // Animate each tag with a delay
+                // Animate the clicked tag
                 gsap.to(tagElement, {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 0.4,
-                    delay: index * 0.03,
-                    ease: "back.out(1.7)"
+                    scale: 1.2,
+                    duration: 0.2,
+                    yoyo: true,
+                    repeat: 1
                 });
             });
-        }
-
-        function copyOwnerTags() {
-            const tags = Array.from(document.querySelectorAll('#ownerTagCloud .tag')).map(tag => tag.textContent);
-            if (tags.length === 0) return;
             
-            navigator.clipboard.writeText(tags.join(', '));
-            showCopyNotification();
-        }
-
-        function copyAiTags() {
-            const tags = Array.from(document.querySelectorAll('#aiTagCloud .tag')).map(tag => tag.textContent);
-            if (tags.length === 0) return;
+            container.appendChild(tagElement);
             
-            navigator.clipboard.writeText(tags.join(', '));
-            showCopyNotification();
-        }
-
-        function copyAllInfo() {
-            const title = videoTitle.textContent;
-            const channel = videoChannel.textContent;
-            const date = videoDate.textContent;
-            const ownerTags = Array.from(document.querySelectorAll('#ownerTagCloud .tag')).map(tag => tag.textContent).join(', ');
-            const aiTags = Array.from(document.querySelectorAll('#aiTagCloud .tag')).map(tag => tag.textContent).join(', ');
-            
-            let allInfo = `Title: ${title}\nChannel: ${channel}\nPublished: ${date}\n\n`;
-            
-            if (ownerTags.length > 0) {
-                allInfo += `Owner's Tags:\n${ownerTags}\n\n`;
-            }
-            
-            if (aiTags.length > 0) {
-                allInfo += `AI-Generated Tags:\n${aiTags}`;
-            }
-            
-            navigator.clipboard.writeText(allInfo);
-            showCopyNotification();
-        }
-
-        function showCopyNotification() {
-            const notification = document.getElementById('copyNotification');
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
-            
-            // Animate the notification
-            gsap.from(notification, {
-                scale: 0.8,
-                duration: 0.3,
+            // Animate each tag with a delay
+            gsap.to(tagElement, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.4,
+                delay: index * 0.03,
                 ease: "back.out(1.7)"
             });
-        }
-
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorContainer.style.display = 'block';
-            
-            // Animate error appearance
-            gsap.from(errorContainer, {
-                opacity: 0,
-                y: -20,
-                duration: 0.4,
-                ease: "back.out(1.2)"
-            });
-        }
-
-        function hideError() {
-            gsap.to(errorContainer, {
-                opacity: 0,
-                y: -20,
-                duration: 0.3,
-                onComplete: () => {
-                    errorContainer.style.display = 'none';
-                }
-            });
-        }
-
-        function showLoading() {
-            loadingSpinner.style.display = 'block';
-            resultsContainer.style.display = 'none';
-            tagOptions.style.display = 'none';
-            
-            // Animate loading spinner
-            gsap.from(loadingSpinner, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.4
-            });
-        }
-
-        function hideLoading() {
-            gsap.to(loadingSpinner, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.3,
-                onComplete: () => {
-                    loadingSpinner.style.display = 'none';
-                }
-            });
-        }
-
-        function clearResults() {
-            resultsContainer.style.display = 'none';
-            videoTitle.textContent = '';
-            videoChannel.textContent = '';
-            videoDate.textContent = '';
-            tagOptions.style.display = 'none';
-            ownerTagsContainer.style.display = 'none';
-            ownerTagCloud.innerHTML = '';
-            ownerTagCount.textContent = '0';
-            noOwnerTagsMessage.classList.add('hidden');
-            aiTagsContainer.style.display = 'none';
-            aiTagCloud.innerHTML = '';
-            aiTagCount.textContent = '0';
-            keywordInput.value = '';
-            currentVideoData = null;
-        }
-
-        // Initial animations when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            gsap.from("header", {
-                opacity: 0,
-                y: -50,
-                duration: 0.8,
-                ease: "power2.out"
-            });
-            
-            gsap.from(".slide-up", {
-                opacity: 0,
-                y: 40,
-                duration: 0.8,
-                stagger: 0.1,
-                delay: 0.3,
-                ease: "back.out(1.2)"
-            });
         });
-    </script>
+    }
+
+    function copyOwnerTags() {
+        const tags = Array.from(document.querySelectorAll('#ownerTagCloud .tag')).map(tag => tag.textContent);
+        if (tags.length === 0) return;
+        
+        navigator.clipboard.writeText(tags.join(', '));
+        showCopyNotification();
+    }
+
+    function copyAiTags() {
+        const tags = Array.from(document.querySelectorAll('#aiTagCloud .tag')).map(tag => tag.textContent);
+        if (tags.length === 0) return;
+        
+        navigator.clipboard.writeText(tags.join(', '));
+        showCopyNotification();
+    }
+
+    function copyAllInfo() {
+        const title = videoTitle.textContent;
+        const channel = videoChannel.textContent;
+        const date = videoDate.textContent;
+        const ownerTags = Array.from(document.querySelectorAll('#ownerTagCloud .tag')).map(tag => tag.textContent).join(', ');
+        const aiTags = Array.from(document.querySelectorAll('#aiTagCloud .tag')).map(tag => tag.textContent).join(', ');
+        
+        let allInfo = `Title: ${title}\nChannel: ${channel}\nPublished: ${date}\n\n`;
+        
+        if (ownerTags.length > 0) {
+            allInfo += `Owner's Tags:\n${ownerTags}\n\n`;
+        }
+        
+        if (aiTags.length > 0) {
+            allInfo += `AI-Generated Tags:\n${aiTags}`;
+        }
+        
+        navigator.clipboard.writeText(allInfo);
+        showCopyNotification();
+    }
+
+    function showCopyNotification() {
+        const notification = document.getElementById('copyNotification');
+        notification.classList.add('show');
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 2000);
+        
+        // Animate the notification
+        gsap.from(notification, {
+            scale: 0.8,
+            duration: 0.3,
+            ease: "back.out(1.7)"
+        });
+    }
+
+    function showError(message) {
+        errorMessage.textContent = message;
+        errorContainer.style.display = 'block';
+        
+        // Animate error appearance
+        gsap.from(errorContainer, {
+            opacity: 0,
+            y: -20,
+            duration: 0.4,
+            ease: "back.out(1.2)"
+        });
+    }
+
+    function hideError() {
+        gsap.to(errorContainer, {
+            opacity: 0,
+            y: -20,
+            duration: 0.3,
+            onComplete: () => {
+                errorContainer.style.display = 'none';
+            }
+        });
+    }
+
+    function showLoading() {
+        loadingSpinner.style.display = 'block';
+        resultsContainer.style.display = 'none';
+        tagOptions.style.display = 'none';
+        
+        // Animate loading spinner
+        gsap.from(loadingSpinner, {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.4
+        });
+    }
+
+    function hideLoading() {
+        gsap.to(loadingSpinner, {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.3,
+            onComplete: () => {
+                loadingSpinner.style.display = 'none';
+            }
+        });
+    }
+
+    function clearResults() {
+        resultsContainer.style.display = 'none';
+        videoTitle.textContent = '';
+        videoChannel.textContent = '';
+        videoDate.textContent = '';
+        tagOptions.style.display = 'none';
+        ownerTagsContainer.style.display = 'none';
+        ownerTagCloud.innerHTML = '';
+        ownerTagCount.textContent = '0';
+        noOwnerTagsMessage.classList.add('hidden');
+        aiTagsContainer.style.display = 'none';
+        aiTagCloud.innerHTML = '';
+        aiTagCount.textContent = '0';
+        keywordInput.value = '';
+        currentVideoData = null;
+    }
+
+    // Initial animations when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        gsap.from("header", {
+            opacity: 0,
+            y: -50,
+            duration: 0.8,
+            ease: "power2.out"
+        });
+        
+        gsap.from(".slide-up", {
+            opacity: 0,
+            y: 40,
+            duration: 0.8,
+            stagger: 0.1,
+            delay: 0.3,
+            ease: "back.out(1.2)"
+        });
+    });
+</script>
 </body>
 </html>
